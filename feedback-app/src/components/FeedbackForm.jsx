@@ -1,13 +1,16 @@
-import {useState} from "react";
+import {useState, useContext} from "react"
 import Card from "./shared/Card"
 import Button from "./shared/Button"
-import RatingSelector  from "./RatingSelector";
+import RatingSelector  from "./RatingSelector"
+import FeedbackContext from "../context/FeedbackContext"
 
-function FeedbackForm({ handleAdd }) {
+function FeedbackForm({ /*handleAdd*/ }) {
     const [feedbackText, setFeedbackText] = useState('')
     const [rating, setRating] = useState(10)
     const [btnDisabled, setBtnDisabled] = useState(true)
     const [displayMessage, setDisplayMessage] = useState('')
+
+    const{addFeedback} = useContext(FeedbackContext)
 
     const handleFbChange = (e) => {
         if (feedbackText === '') {
@@ -34,7 +37,7 @@ function FeedbackForm({ handleAdd }) {
                 rating
             }
 
-            handleAdd(newFeedback);
+            addFeedback(newFeedback);
             setFeedbackText("")
         }
     }

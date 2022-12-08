@@ -1,0 +1,24 @@
+{
+  "feedback": [
+    {
+      "id": 1,
+      "rating": 10,
+      "text": "The polaris was dope, and the Dominican lunch was delicious"
+    },
+    {
+      "id": 2,
+      "rating": 8,
+      "text": "The reef was cool, didn`t see any rays or sharks though"
+    },
+    {
+      "id": 3,
+      "rating": 9,
+      "text": "The spa was a great experience"
+    },
+    {
+      "id": 4,
+      "rating": 7,
+      "text": "Could not find an outdoor hotub, otherwise great resort"
+    }
+  ]
+}

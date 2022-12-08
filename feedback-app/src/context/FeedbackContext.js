@@ -41,8 +41,11 @@ export const FeedbackProvider = ({children}) => {
     }
 
     // Remove a specific feedback entry
-    const deleteFeedback = (id) => {
+    const deleteFeedback = async(id) => {
         if (window.confirm('Are you sure you want to remove this feedback?')) {
+            await fetch(`/feedback/${id}`, {
+                method: 'DELETE'
+            })
             setFeedback(feedback.filter((item) => item.id !== id))
         }
     }
@@ -56,9 +59,17 @@ export const FeedbackProvider = ({children}) => {
     }
 
     // Updates the feedback on selected item
-    const updateFeedback = (id, updtItem) => {
+    const updateFeedback = async(id, updtItem) => {
+        const response = await fetch(`feedback/${id}`, {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(updtItem)
+        })
+
+        const data = await response.json()
+
         setFeedback(feedback.map((item) => (item.id === id ? {
-            ...item, ...updtItem } : item))
+            ...item, ...data } : item))
         )
       }
 

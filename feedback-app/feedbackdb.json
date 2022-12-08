@@ -19,6 +19,11 @@
       "id": 4,
       "rating": 7,
       "text": "Could not find an outdoor hotub, otherwise great resort"
+    },
+    {
+      "text": "This is a test",
+      "rating": 5,
+      "id": 5
     }
   ]
 }

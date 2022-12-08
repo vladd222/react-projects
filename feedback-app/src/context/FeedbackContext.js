@@ -20,7 +20,7 @@ export const FeedbackProvider = ({children}) => {
 
     // Fetch feedback data from backend (mock json file)
     const fetchFeedback = async () => {
-        const response = await fetch("http://localhost:5000/feedback?_sort=id&_order=desc")
+        const response = await fetch("/feedback?_sort=id&_order=desc")
         const data = await response.json()
         console.log(data)
         setFeedback(data)
@@ -28,10 +28,16 @@ export const FeedbackProvider = ({children}) => {
     }
 
     // Add a new entry (new feedback)
-    const addFeedback = (newFeedback) => {
-        newFeedback.id = Math.ceil(Math.random() * 800)
-        console.log(newFeedback)
-        setFeedback([newFeedback, ...feedback])
+    const addFeedback = async(newFeedback) => {
+        const response = await fetch('/feedback', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(newFeedback)
+        })
+
+        const data = await response.json()
+        console.log(data)
+        setFeedback([data, ...feedback])
     }
 
     // Remove a specific feedback entry
